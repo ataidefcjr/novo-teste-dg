@@ -46,8 +46,8 @@ Portanto, desenvolva um código de web scraping que obtenha a tarifa diretamente
 
 ### Requisitos dos Desafios:
 1. A linguagem Python deverá ser utilizada para o desenvolvimento das soluções;
-2. A calculadora deve ser implementada no arquivo calculadora.py, especificamente dentro da função calculadora();
-3. Todos os testes contidos no arquivo calculadora.py devem ser executados sem apresentar erros;
+2. A calculadora deve ser implementada nos arquivos calculadora_desafio1.py e calculadora_desafio2.py, especificamente dentro da função calculadora();
+3. Todos os testes contidos nos dois arquivos devem ser executados sem apresentar erros;
 4. No Desafio 2, a escolha de bibliotecas e ferramentas para web scraping é livre, contanto que sejam implementadas em Python;
 5. Inclua neste mesmo README uma seção detalhada que explique claramente os passos necessários para executar o código. Certifique-se de que as instruções sejam precisas, organizadas e fáceis de entender, pois os avaliadores seguirão essa documentação;
 6. A entrega deve ser realizada dentro do prazo estabelecido;
