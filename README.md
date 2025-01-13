@@ -1,6 +1,6 @@
-Para rodar o código vai ser necessário instalar apenas a biblioteca `bs4`, para isso basta rodar o código 
+Para rodar o código vai ser necessário instalar apenas a biblioteca `bs4` e `requests`, para isso basta rodar o código 
 ```sh
-pip install bs4
+pip install bs4 requests
 ```
 E então basta rodar os códigos
 ```sh
