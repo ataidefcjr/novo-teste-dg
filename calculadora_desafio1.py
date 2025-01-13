@@ -2,12 +2,44 @@ def calculadora(consumo: list, tarifa: float, classe: str) -> tuple:
     """
     retorna uma tupla de floats contendo economia anual, economia mensal, desconto aplicado e cobertura.
     """
-    economia_anual = 0
-    economia_mensal = 0
-    desconto_aplicado = 0
-    cobertura = 0
 
-    # Desenvolva seu código aqui #
+    descontos = {
+        'Residencial': {
+            '< 10.000 kWh' : .18,
+            '>= 10.000 kWh e <= 20.000 kWh' : .22,
+            '> 20.000 kWh' : .25
+        },
+        'Comercial': {
+            '< 10.000 kWh' : .16,
+            '>= 10.000 kWh e <= 20.000 kWh' : .18,
+            '> 20.000 kWh' : .22
+        },
+        'Industrial': {
+            '< 10.000 kWh' : .12,
+            '>= 10.000 kWh e <= 20.000 kWh' : .15,
+            '> 20.000 kWh' : .18
+        }
+    }
+
+    coberturas = {
+        '< 10.000 kWh' : .9,
+        '>= 10.000 kWh e <= 20.000 kWh' : .95,
+        '> 20.000 kWh' : .99
+    }
+
+    media = sum(consumo) / len(consumo)
+
+    if media < 10000:
+        faixa_consumo = '< 10.000 kWh'
+    elif 10000 <= media <= 20000:
+        faixa_consumo = '>= 10.000 kWh e <= 20.000 kWh'
+    else:
+        faixa_consumo = '> 20.000 kWh'
+
+    cobertura = coberturas[faixa_consumo]
+    desconto_aplicado = descontos[classe][faixa_consumo]
+    economia_mensal = ((tarifa * media) * desconto_aplicado) * cobertura
+    economia_anual = (economia_mensal * 12)
 
     return (
         round(economia_anual, 2),

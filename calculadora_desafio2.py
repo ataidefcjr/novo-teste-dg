@@ -1,11 +1,91 @@
+import requests
+from bs4 import BeautifulSoup
+
+def buscar_tarifa(bandeira: str, classe: str):
+    """
+    Retorna a tarifa de acordo com a bandeira.
+    Parâmetros:
+    bandeira (str): Nome da bandeira ('BANDEIRA VERDE', 'BANDEIRA AMARELA', 
+                     'BANDEIRA VERMELHA 1', 'BANDEIRA VERMELHA 2')
+    classe (str): Nome da classe ('Residencial', 'Comercial', 'Industrial')
+    
+    Retorno:
+    float: O valor da tarifa correspondente à bandeira solicitada.
+    """
+    try:
+        url = 'https://www.cemig.com.br/atendimento/valores-de-tarifas-e-servicos/'
+        response = requests.get(url)
+    except requests.exceptions.RequestException as e:
+        raise Exception(f"Erro na requisição para obter os dados da página: {e}")
+
+    classes = {
+        'Residencial' : 'B1- RESIDENCIAL NORMAL',
+        'Comercial' : 'B3 - DEMAIS CLASSES',
+        'Industrial' : 'B3 - DEMAIS CLASSES',
+    }
+    
+    soup = BeautifulSoup(response.content,'html.parser')
+    tabelas = soup.find_all('table', attrs={'class':'table table-bordered'})
+    tarifas = []
+    for tabela in tabelas:
+        cabecalhos = tabela.find_all('th')
+        for cabecalho in cabecalhos:
+            if classes[classe] in cabecalho.text:
+                linhas = tabela.find_all('td')
+                tarifas = [linha.text.strip().replace('\n', '').replace(',', '.') for linha in linhas][1:]
+
+    bandeiras = {
+        'BANDEIRA VERDE': tarifas[0],
+        'BANDEIRA AMARELA': tarifas[1],
+        'BANDEIRA VERMELHA 1': tarifas[2],
+        'BANDEIRA VERMELHA 2': tarifas[3],
+    }
+    
+    return float(bandeiras[bandeira])
+
 def calculadora(consumo: list, classe: str, bandeira: str) -> tuple:
     """
-    retorna uma tupla de floats contendo economia anual, economia mensal, desconto aplicado e cobertura.
+    Retorna uma tupla de floats contendo economia anual, economia mensal, desconto aplicado e cobertura.
     """
-    economia_anual = 0
-    economia_mensal = 0
-    desconto_aplicado = 0
-    cobertura = 0
+    tarifa = buscar_tarifa(bandeira,classe)
+
+    descontos = {
+        'Residencial': {
+            '< 10.000 kWh' : .18,
+            '>= 10.000 kWh e <= 20.000 kWh' : .22,
+            '> 20.000 kWh' : .25
+        },
+        'Comercial': {
+            '< 10.000 kWh' : .16,
+            '>= 10.000 kWh e <= 20.000 kWh' : .18,
+            '> 20.000 kWh' : .22
+        },
+        'Industrial': {
+            '< 10.000 kWh' : .12,
+            '>= 10.000 kWh e <= 20.000 kWh' : .15,
+            '> 20.000 kWh' : .18
+        }
+    }
+
+    coberturas = {
+        '< 10.000 kWh' : .9,
+        '>= 10.000 kWh e <= 20.000 kWh' : .95,
+        '> 20.000 kWh' : .99
+    }
+
+    media = sum(consumo) / len(consumo)
+
+    if media < 10000:
+        faixa_consumo = '< 10.000 kWh'
+    elif 10000 <= media <= 20000:
+        faixa_consumo = '>= 10.000 kWh e <= 20.000 kWh'
+    else:
+        faixa_consumo = '> 20.000 kWh'
+
+    cobertura = coberturas[faixa_consumo]
+    desconto_aplicado = descontos[classe][faixa_consumo]
+    economia_mensal = ((tarifa * media) * desconto_aplicado) * cobertura
+    economia_anual = (economia_mensal * 12)
 
     # Desenvolva seu código aqui #
 

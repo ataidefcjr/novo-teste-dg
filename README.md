@@ -1,3 +1,26 @@
+Para rodar o código vai ser necessário instalar apenas a biblioteca `bs4`, para isso basta rodar o código 
+```sh
+pip install bs4
+```
+E então basta rodar os códigos
+```sh
+python calculadora_desafio1.py
+python calculadora_desafio2.py
+```
+
+Para o `desafio 1` não foi utilizado nenhuma biblioteca, criei um dicionário chamando `descontos`para evitar o uso de vários `if's`. 
+Também usei a mesma lógica para as `coberturas`.
+
+De acordo com a média, defino a faixa de consumo como string para maior clareza no código, buscando-a posteriormente para calculo da economia mensal.
+
+Para o `desafio 2` a lógica dos calculos permanece a mesma, apenas criei outra função chamada `buscar_tarifa`, que recebe a bandeira e a classe, então é feito uma solicitação GET com a biblioteca requests, dessa solicitação é passado para a biblioteca BeautifulSoap, para podermos efetivamente extrair os dados.
+Pelas pesquisas efetuadas no site da Cemig, verifiquei que as tarifas da classe Comercial e Industrial eram retirados da tabela "B3 - Demais Classes", portanto assumi para o código buscar as tarifas dessa tabela, já para a classe Residencial foi utilizado a primeira tabela, "B1 - Residencial Normal", caso essas premissas assumidas estejam erradas, elas são facilmente corrigidas no código.
+
+O maior desafio que enfrentei nesse código foi entender o negócio, e qual das tabelas da cemig extrair o valor da tarifa.
+
+Em caso de dúvidas estou disponível para esclarecimentos.
+___
+
 <p style="text-align:center" dir="auto">
   <a href="#desafio1">Desafio 1</a>
   &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
