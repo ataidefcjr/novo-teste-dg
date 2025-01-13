@@ -1,11 +1,13 @@
 <p style="text-align:center" dir="auto">
   <a href="#desafio1">Desafio 1</a>
   &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+    <a href="#desafio2">Desafio 1</a>
+  &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
 </p>
 
-<h2 id="desafio1" style="text-align:center;border-bottom:none">Desafio1</h2>
+<h2 id="desafio1" style="text-align:center;border-bottom:none">Desafio 1</h2>
 
-Uma empresa de assinatura de energia está interessada em criar uma calculadora de economia em seu site e consultou você para desenvolver a calculadora para eles. Eles definiram como requisito a utilização da linguagem Python para desenvolver a aplicação.
+Uma empresa de assinatura de energia deseja criar uma calculadora de economia para seu site e contratou você para desenvolver essa solução. Como requisito, foi estabelecido que a aplicação deve ser desenvolvida utilizando a linguagem Python.
 
 ### Sua aplicação receberá as seguintes entradas:
 
@@ -36,7 +38,17 @@ Uma empresa de assinatura de energia está interessada em criar uma calculadora 
 
 *** Cobertura é o valor da energia que o consumidor irá receber da empresa de assinatura de energia em relação à energia consumida
 
-### Requisitos Desafio:
-1. Deverá ser utilizada a linguagem Python para desenvolver as soluções;
-2. A calculadora terá que ser desenvolvida no arquivo calculator_python.py dentro da função calculator();
-3. Todos os testes presentes no arquivo calculator_python.py precisam ser executados sem erros.
+<h2 id="desafio2" style="text-align:center;border-bottom:none">Desafio 2</h2>
+
+Para tornar a aplicação mais versátil e de ampla aplicabilidade, foi solicitado que a tarifa não seja mais uma entrada fixa. Agora, a tarifa deve ser obtida automaticamente a partir do <a href="https://www.cemig.com.br/atendimento/valores-de-tarifas-e-servicos/" target="_blank">site da CEMIG</a>. Com base na classe de consumo e na bandeira tarifária, será possível determinar a tarifa que será utilizada pela calculadora.
+
+Portanto, desenvolva um código de web scraping que obtenha a tarifa diretamente do site e integre essa funcionalidade à calculadora criada no Desafio 1. Certifique-se de que a tarifa capturada seja corretamente utilizada nos cálculos.
+
+### Requisitos dos Desafios:
+1. A linguagem Python deverá ser utilizada para o desenvolvimento das soluções;
+2. A calculadora deve ser implementada no arquivo calculadora.py, especificamente dentro da função calculadora();
+3. Todos os testes contidos no arquivo calculadora.py devem ser executados sem apresentar erros;
+4. No Desafio 2, a escolha de bibliotecas e ferramentas para web scraping é livre, contanto que sejam implementadas em Python;
+5. Inclua neste mesmo README uma seção detalhada que explique claramente os passos necessários para executar o código. Certifique-se de que as instruções sejam precisas, organizadas e fáceis de entender, pois os avaliadores seguirão essa documentação;
+6. A entrega deve ser realizada dentro do prazo estabelecido;
+7. O candidato deve fazer um fork do repositório. A entrega pode ser realizada por meio de um pull request para o repositório original (o que será considerado um diferencial) ou enviando o link do seu repositório para o e-mail lucas@dg.energy.
