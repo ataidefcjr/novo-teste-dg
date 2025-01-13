@@ -1,7 +1,7 @@
 <p style="text-align:center" dir="auto">
   <a href="#desafio1">Desafio 1</a>
   &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-    <a href="#desafio2">Desafio 1</a>
+    <a href="#desafio2">Desafio 2</a>
   &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
 </p>
 
