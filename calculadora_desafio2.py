@@ -1,9 +1,9 @@
-from calculadora import CalculadoraDeTarifas
+from calculadora import Calculadora
 
 if __name__ == "__main__":
     print("Testando...")
 
-    calc = CalculadoraDeTarifas()
+    calc = Calculadora()
     
     assert calc.calcular_desconto([1518, 1071, 968], "Industrial", "BANDEIRA VERMELHA 2") == (
         1349.86,
